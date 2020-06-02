@@ -1,0 +1,10 @@
+eclipse.preferences.version=1
+encoding//sec/main/resources/mapper/SearchMapper.xml=GBK
+encoding//src/main/java=UTF-8
+encoding//src/main/java/cn/book/StarterSearchService.java=GBK
+encoding//src/main/java/cn/book/search/config/TransportConfig.java=GBK
+encoding//src/main/java/cn/book/search/controller/SearchController.java=GBK
+encoding//src/main/java/cn/book/search/mapper/SearchMapper.java=GBK
+encoding//src/main/java/cn/book/search/service/SearchService.java=GBK
+encoding//src/test/java=UTF-8
+encoding/<project>=UTF-8

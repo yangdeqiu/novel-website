@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.book.novel.mapper.NovelMapper">
+	<select id="pageQuery" resultType="Novel">
+		select * from novel where
+		status = '0' limit #{start},#{rows} ;
+	</select>
+	<select id="queryCount" resultType="int">
+		select count(*) from novel
+		where status ='0';
+	</select>
+	<select id="queryById" parameterType="string" resultType="Novel">
+		select
+		* from novel where novel_id=#{novelId};
+	</select>
+	<select id="queryByCategory" resultType="Novel">
+		SELECT * FROM novel
+		WHERE category_id = #{category} ORDER BY score DESC LIMIT 9;
+	</select>
+	<!-- 排序的个数写死了，后期看需要更改不 -->
+	<select id="queryCategory" resultType="Category">
+		select * from
+		category
+		order by category_id;
+	</select>
+	
+	<resultMap type="ClassifyPageVo" id="RMDPageVo"> 
+			<id column="category_id" property="categoryId"/>
+			<collection property="novelList" javaType="ArrayList"  
+			ofType="Novel" column="category_id" select="queryNovel"> </collection> 
+		 </resultMap> 
+		<select id="queryNovelAllClassify" resultMap="RMDPageVo"> 
+			select * from category order by category_id;
+		</select> 
+		<select id="queryNovel" resultType="Novel" parameterType="Integer"> 
+			select * from novel where category_id=#{category_id} limit 0,9; 
+		</select> 
+		
+		<!--查询分类相关数据  -->
+		<select id="queryByClass" resultType="java.util.HashMap">
+			SELECT
+				category.categoryname as name,
+				count( 1 ) as count
+			FROM
+				category
+				JOIN novel ON category.category_id = novel.category_id
+			GROUP BY	category.category_id
+			ORDER BY category.category_id ;
+		</select>
+</mapper> 
+
+
+
+
+
+
+
+
+
+
+
+

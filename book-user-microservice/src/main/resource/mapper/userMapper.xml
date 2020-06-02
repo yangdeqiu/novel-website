@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.book.user.mapper.UserMapper">
+	<!--user字段 -->
+	<sql id="Base_Column">
+		user_id, username, password, email, sex, type, jf, regdate
+	</sql>
+
+	<!--登陆查询 -->
+	<select id="queryOne" resultType="User" parameterType="User">
+		select
+		<include refid="Base_Column" />
+		from user
+		where username = #{username}
+		and password = #{password}
+	</select>
+
+	<!--用户注册 -->
+	<insert id="save" parameterType="User">
+		insert into user (
+			user_id,
+			username,
+			password,
+			email,
+			sex,
+			type,
+			jf,
+			regdate
+		)values (
+			#{userId},
+			#{username},
+			#{password},
+			#{email},
+			#{sex},
+			#{type},
+			20,<!--默认20积分  -->
+			sysdate()<!--系统时间  -->
+		)
+	</insert>
+
+	<!--验证用户存在  -->
+	<select id="queryExistUser" resultType="int" parameterType="String">
+		select count(user_id) from user where username = #{username}
+	</select>
+</mapper>

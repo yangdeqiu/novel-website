@@ -1,0 +1,11 @@
+eclipse.preferences.version=1
+encoding//src/main/java=GBK
+encoding//src/main/java/cn/book/StarterNovelService.java=GBK
+encoding//src/main/java/cn/book/novel/controller/NewNovelController.java=GBK
+encoding//src/main/java/cn/book/novel/controller/NovelController.java=GBK
+encoding//src/main/java/cn/book/novel/mapper/NovelMapper.java=GBK
+encoding//src/main/java/cn/book/novel/service/NovelService.java=GBK
+encoding//src/main/resource/application.properties=GBK
+encoding//src/main/resource/mapper=GBK
+encoding//src/test/java=GBK
+encoding/<project>=GBK
